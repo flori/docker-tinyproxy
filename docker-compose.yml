@@ -1,0 +1,14 @@
+---
+version: '3.9'
+services:
+  tinyproxy:
+      image: flori303/tinyproxy:82bdf25
+      environment:
+        - "TZ=CET"
+      stdin_open: yes
+      tty: yes
+      restart: unless-stopped
+      ports:
+        - '8080:80'
+      volumes:
+      - ./config/tinyproxy.conf:/etc/tinyproxy/tinyproxy.conf
