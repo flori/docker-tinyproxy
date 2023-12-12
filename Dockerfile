@@ -1,4 +1,4 @@
-FROM alpine:3.17
+FROM alpine:3.18
 
 RUN apk add --no-cache --update tzdata; \
   cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime; \
