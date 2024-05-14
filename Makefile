@@ -1,5 +1,6 @@
 DOCKER_USER = flori303
 DOCKER_IMAGE_NAME = tinyproxy
+GITHUB_REF_NAME ?= $(shell git rev-parse --short HEAD)
 DOCKER_IMAGE_VERSION = ${GITHUB_REF_NAME}
 TAG := $(shell git rev-parse HEAD | cut -c 1-7)
 
@@ -16,6 +17,9 @@ build: pre-build
 
 build-local: pre-build
 	docker buildx build --platform linux/amd64,linux/arm64 -t $(DOCKER_IMAGE_NAME) .
+
+grype: build
+	@grype --add-cpes-if-none --by-cve "$(DOCKER_USER)/$(DOCKER_IMAGE_NAME)"
 
 git-tag:
 	git tag $(TAG)
