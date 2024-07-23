@@ -18,6 +18,9 @@ build: pre-build
 build-local: pre-build
 	docker buildx build --platform linux/amd64,linux/arm64 -t $(DOCKER_IMAGE_NAME) .
 
+build-info:
+	@echo "$(DOCKER_USER)/$(DOCKER_IMAGE_NAME):$(TAG)"
+
 grype: build
 	@docker run --pull always --rm --volume /var/run/docker.sock:/var/run/docker.sock --name Grype anchore/grype:latest --add-cpes-if-none --by-cve "$(DOCKER_USER)/$(DOCKER_IMAGE_NAME)"
 
