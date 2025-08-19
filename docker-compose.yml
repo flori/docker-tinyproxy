@@ -1,6 +1,6 @@
 services:
   tinyproxy:
-      image: flori303/tinyproxy:82bdf25
+      image: flori303/tinyproxy:cfce940
       environment:
         - "TZ=CET"
       stdin_open: yes
