@@ -1,5 +1,3 @@
----
-version: '3.9'
 services:
   tinyproxy:
       image: flori303/tinyproxy:82bdf25
