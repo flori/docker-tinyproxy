@@ -16,7 +16,7 @@ build: pre-build
 	docker buildx build --platform linux/amd64,linux/arm64 --pull --push -t $(DOCKER_USER)/$(DOCKER_IMAGE_NAME) -t $(DOCKER_USER)/$(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_VERSION) .
 
 build-local: pre-build
-	docker buildx build --platform linux/amd64,linux/arm64 -t $(DOCKER_IMAGE_NAME) .
+	docker buildx build --platform linux/amd64,linux/arm64 --load -t $(DOCKER_IMAGE_NAME) .
 
 build-info:
 	@echo "$(DOCKER_USER)/$(DOCKER_IMAGE_NAME):$(TAG)"
