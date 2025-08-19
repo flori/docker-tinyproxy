@@ -1,6 +1,6 @@
 services:
   tinyproxy:
-      image: flori303/tinyproxy:4d67082
+      image: flori303/tinyproxy:ece5b1a
       stdin_open: yes
       tty: yes
       restart: unless-stopped
