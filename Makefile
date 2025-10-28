@@ -6,13 +6,7 @@ TAG := $(shell git rev-parse HEAD | cut -c 1-7)
 
 .EXPORT_ALL_VARIABLES:
 
-pre-build:
-	docker buildx rm tinyproxy-builder || true
-	docker buildx create --name tinyproxy-builder
-	docker buildx use tinyproxy-builder
-	docker buildx inspect --bootstrap
-
-build: pre-build
+build:
 	docker buildx build --platform linux/amd64,linux/arm64 --pull --push -t $(DOCKER_USER)/$(DOCKER_IMAGE_NAME) -t $(DOCKER_USER)/$(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_VERSION) .
 
 build-local: pre-build
