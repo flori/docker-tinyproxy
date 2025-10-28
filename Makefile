@@ -9,7 +9,7 @@ TAG := $(shell git rev-parse HEAD | cut -c 1-7)
 build:
 	docker buildx build --platform linux/amd64,linux/arm64 --pull --push -t $(DOCKER_USER)/$(DOCKER_IMAGE_NAME) -t $(DOCKER_USER)/$(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_VERSION) .
 
-build-local: pre-build
+build-local:
 	docker buildx build --platform linux/amd64,linux/arm64 --load -t $(DOCKER_IMAGE_NAME) .
 
 build-info:
