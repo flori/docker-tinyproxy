@@ -24,7 +24,7 @@ build-info:
 grype: build
 	@docker run --pull always --rm --volume /var/run/docker.sock:/var/run/docker.sock --name Grype anchore/grype:latest --add-cpes-if-none --by-cve "$(DOCKER_USER)/$(DOCKER_IMAGE_NAME)"
 
-git-tag:
+release:
 	git tag $(TAG)
-	git push origin
 	git push origin $(TAG)
+	git push origin
