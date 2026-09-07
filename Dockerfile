@@ -5,7 +5,7 @@ RUN apk add --no-cache --update tzdata; \
   echo "Europe/Berlin" >/etc/timezone; \
   apk del tzdata
 
-RUN apk add --no-cache tinyproxy ca-certificates
+RUN apk add --no-cache --update tinyproxy ca-certificates
 
 EXPOSE 80
 
